@@ -1,0 +1,842 @@
+Build a **premium, modern, highly attractive and animated dental clinic website** for:
+
+# AAZHI DENTAL CARE
+
+Location:
+526, Marudhamalai Rd, opposite to N.S.R Bakery, P N Pudur, Coimbatore, Tamil Nadu 641041
+
+Phone:
+099945 55278
+
+Google rating:
+⭐ 4.9 / 5 from 174+ reviews
+
+Business type:
+Dental Clinic
+
+The website should be designed as a **high-end freelance client demo**. The goal is that when the clinic owner opens the website for the first time, they immediately think:
+
+> "This looks premium. We need this for our clinic."
+
+Do NOT make it look like a generic Bootstrap dental template.
+
+---
+
+# 1. TECHNOLOGY
+
+Use:
+
+* React
+* Vite
+* Tailwind CSS
+* Framer Motion / Motion for animations
+* Lucide React icons
+* Modern responsive design
+* Clean reusable components
+* Mobile-first architecture
+
+The website must run perfectly in Replit.
+
+Use smooth scrolling and animated page transitions.
+
+---
+
+# 2. OVERALL DESIGN DIRECTION
+
+Create a **premium healthcare + modern luxury aesthetic**.
+
+Visual style:
+
+* Clean
+* Elegant
+* Trustworthy
+* Minimal
+* Premium
+* Modern
+* Warm
+* Professional
+* High-conversion
+
+Color palette:
+
+Primary:
+#0F766E
+
+Secondary:
+#14B8A6
+
+Light:
+#F0FDFA
+
+Background:
+#F8FAFC
+
+Text:
+#0F172A
+
+Muted:
+#64748B
+
+Accent:
+#F59E0B
+
+White:
+#FFFFFF
+
+Use plenty of white space.
+
+Use subtle gradients.
+
+Use glassmorphism sparingly.
+
+Use rounded cards with approximately 18–28px border radius.
+
+Use soft shadows.
+
+Avoid excessive borders.
+
+Avoid overly bright colors.
+
+---
+
+# 3. NAVBAR
+
+Create a premium sticky navbar.
+
+Left:
+
+Aazhi Dental Care logo.
+
+If no real logo asset exists, create a beautiful temporary dental logo using a simple tooth + wave/curve concept.
+
+Center/right navigation:
+
+* Home
+* About
+* Treatments
+* Why Aazhi
+* Reviews
+* Contact
+
+Right side:
+
+Primary CTA button:
+
+"Book an Appointment"
+
+Add a small phone icon.
+
+Navbar behavior:
+
+* Transparent over hero initially
+* Changes to white/glass background when scrolling
+* Smooth animation
+* Mobile hamburger menu
+* Mobile menu should animate open/close
+
+---
+
+# 4. HERO SECTION — MOST IMPORTANT
+
+Make the hero section extremely impressive.
+
+Full viewport height.
+
+Layout:
+
+LEFT:
+
+Small badge:
+
+"Trusted Dental Care in Coimbatore"
+
+Large headline:
+
+"Your Smile Deserves
+Exceptional Care."
+
+Highlight "Exceptional Care." with the primary teal gradient.
+
+Supporting text:
+
+"Advanced dental care with a gentle approach — helping you and your family smile with confidence."
+
+Buttons:
+
+Primary:
+"Book an Appointment →"
+
+Secondary:
+"Explore Treatments"
+
+Below buttons add trust indicators:
+
+⭐ 4.9 Google Rating
+
+174+ Happy Reviews
+
+Affordable Care
+
+Experienced Doctors
+
+RIGHT:
+
+Create a premium dental/doctor visual composition.
+
+Use a large rounded image of a modern dentist/patient interaction.
+
+Add floating glass cards around the image:
+
+Card 1:
+⭐
+"4.9 Google Rating"
+
+Card 2:
+"174+"
+"Patient Reviews"
+
+Card 3:
+"✓"
+"Trusted Dental Care"
+
+Use subtle floating animation.
+
+Add soft gradient blobs behind the image.
+
+Add small decorative tooth/sparkle elements.
+
+Hero should feel like a **premium healthcare startup website**, not a basic clinic website.
+
+---
+
+# 5. TRUST STRIP
+
+Immediately below hero.
+
+Create a horizontal trust section:
+
+"Trusted by patients across Coimbatore"
+
+Stats:
+
+4.9★
+Google Rating
+
+174+
+Reviews
+
+10+
+Dental Services
+
+100%
+Patient Focus
+
+Use animated counters when scrolling into view.
+
+---
+
+# 6. ABOUT SECTION
+
+Create a two-column premium section.
+
+LEFT:
+
+Large dental clinic image.
+
+Add a small floating badge:
+
+"Care that makes you smile"
+
+RIGHT:
+
+Eyebrow:
+
+"ABOUT AAZHI DENTAL CARE"
+
+Heading:
+
+"Modern Dentistry.
+Personalized Care."
+
+Content:
+
+"At Aazhi Dental Care, we believe dental treatment should be comfortable, transparent and accessible. Our focus is to provide quality dental care while making every patient feel relaxed and informed throughout their treatment."
+
+Add 3 feature points:
+
+✓ Clear treatment explanations
+
+✓ Patient-first approach
+
+✓ Quality care at an affordable cost
+
+CTA:
+
+"Meet Our Team →"
+
+Animate section on scroll.
+
+---
+
+# 7. TREATMENTS SECTION
+
+Heading:
+
+"Complete Dental Care Under One Roof"
+
+Subtitle:
+
+"From routine checkups to advanced dental treatments, we're here for every stage of your smile journey."
+
+Create beautiful animated treatment cards.
+
+Include:
+
+1. General Dentistry
+   Icon: Tooth
+
+"Preventive and routine dental care for healthy teeth and gums."
+
+2. Wisdom Tooth Removal
+   Icon: Activity / Tooth
+
+"Comfort-focused care for wisdom tooth problems."
+
+3. Root Canal Treatment
+   Icon: Shield
+
+"Advanced treatment to save damaged or infected teeth."
+
+4. Dental Implants
+   Icon: Smile
+
+"Natural-looking solutions for missing teeth."
+
+5. Teeth Whitening
+   Icon: Sparkles
+
+"Brighten your smile with professional whitening."
+
+6. Cosmetic Dentistry
+   Icon: SmilePlus
+
+"Enhance your smile with personalized cosmetic treatments."
+
+7. Braces & Aligners
+   Icon: AlignCenter
+
+"Solutions designed to create a straighter, healthier smile."
+
+8. Children's Dentistry
+   Icon: Heart
+
+"Gentle and friendly dental care for children."
+
+Each card should have:
+
+* Icon
+* Treatment name
+* Description
+* "Learn More →"
+
+On hover:
+
+* Card slightly lifts
+* Icon animates
+* Arrow moves right
+* Subtle gradient background appears
+
+---
+
+# 8. WHY CHOOSE AAZHI
+
+Create a visually strong section with a large circular/abstract dental graphic.
+
+Heading:
+
+"Why Patients Choose Aazhi"
+
+Create 4 premium feature cards:
+
+01
+Patient First
+
+"Every treatment begins with understanding your needs."
+
+02
+Clear Explanations
+
+"We explain your treatment plan so you can make confident decisions."
+
+03
+Affordable Care
+
+"Quality dental treatment without unnecessary complexity."
+
+04
+Comfortable Experience
+
+"We focus on making every visit calm, comfortable and reassuring."
+
+Use large numbers and subtle animations.
+
+---
+
+# 9. GOOGLE REVIEW SECTION
+
+This section should strongly leverage the clinic's existing reputation.
+
+Heading:
+
+"Trusted by Patients. Loved by Families."
+
+Large rating:
+
+4.9 ★
+
+"Based on 174+ Google Reviews"
+
+Create an animated review carousel.
+
+Use the following real review snippets provided by the client:
+
+Review 1:
+
+"Highly recommended for high quality treatment at affordable price."
+
+Review 2:
+
+"I have visited Aazhi Dental Care for wisdom tooth removal and the experience has been excellent! Highly recommended for high quality treatment at affordable price."
+
+Review 3:
+
+"Had a nice and satisfied treatment. Dr. Dhinesh explained to us and made us feel comfortable."
+
+Add reviewer names where provided:
+
+Sadana Maha
+
+Aruna
+
+Saktthevel KV
+
+Do not fabricate additional reviews.
+
+Include:
+
+★★★★★
+
+Google Reviews
+
+Button:
+
+"View All Reviews →"
+
+---
+
+# 10. DENTAL EXPERIENCE SECTION
+
+Create an immersive visual section.
+
+Headline:
+
+"A Better Dental Experience Starts Here."
+
+Use a large background dental/clinic image with a dark gradient overlay.
+
+Add floating text:
+
+"Comfort"
+"Trust"
+"Precision"
+"Care"
+
+Add subtle parallax effect.
+
+CTA:
+
+"Start Your Smile Journey →"
+
+---
+
+# 11. APPOINTMENT CTA
+
+Create a premium CTA section.
+
+Background should use a soft teal gradient.
+
+Heading:
+
+"Ready to Smile With Confidence?"
+
+Subtitle:
+
+"Book your visit with Aazhi Dental Care today."
+
+Buttons:
+
+"Book an Appointment"
+
+"Call 099945 55278"
+
+Make the phone button clickable using:
+
+tel:+919994555278
+
+---
+
+# 12. LOCATION SECTION
+
+Create a modern contact/location section.
+
+LEFT:
+
+Heading:
+
+"Visit Aazhi Dental Care"
+
+Address:
+
+526, Marudhamalai Rd,
+Opposite to N.S.R Bakery,
+P N Pudur,
+Coimbatore, Tamil Nadu 641041
+
+Phone:
+
+099945 55278
+
+Hours:
+
+Open · Closes 8:30 PM
+
+RIGHT:
+
+Embed a Google Maps-style location area.
+
+If an actual Google Maps embed is not available, create a beautiful map placeholder with:
+
+"P N Pudur, Coimbatore"
+
+and a button:
+
+"Get Directions →"
+
+The button should open Google Maps search for the clinic location.
+
+---
+
+# 13. FOOTER
+
+Create a premium dark footer.
+
+Include:
+
+Aazhi Dental Care
+
+"Modern dental care. Personal attention. Confident smiles."
+
+Navigation:
+
+Home
+About
+Treatments
+Reviews
+Contact
+
+Contact:
+
+099945 55278
+
+P N Pudur, Coimbatore
+
+Social icons if applicable.
+
+Bottom:
+
+"© 2026 Aazhi Dental Care. All rights reserved."
+
+Also include:
+
+"Website designed with care."
+
+---
+
+# 14. ANIMATIONS
+
+Animations are extremely important.
+
+Use Framer Motion.
+
+Implement:
+
+* Fade-in animations
+* Slide-up animations
+* Staggered card animations
+* Image reveal animations
+* Floating hero cards
+* Hover transformations
+* Smooth navbar transition
+* Animated counters
+* Scroll-triggered sections
+* Testimonial carousel
+* Button hover animations
+* Subtle background gradients
+* Parallax effect in selected sections
+
+Do NOT over-animate.
+
+Animations should feel:
+
+"Apple-like + premium healthcare"
+
+not flashy or childish.
+
+Use animation durations around 0.4–0.8 seconds.
+
+---
+
+# 15. MICRO-INTERACTIONS
+
+Add polished micro-interactions.
+
+Buttons:
+
+On hover:
+
+* Slight upward movement
+* Arrow moves right
+* Subtle shadow
+
+Treatment cards:
+
+On hover:
+
+* Lift 6px
+* Icon rotates/slightly scales
+* Background gradient appears
+
+Navbar:
+
+Active navigation item gets animated underline.
+
+Images:
+
+Use subtle zoom on hover.
+
+CTA:
+
+Use subtle glow/pulse, but do not make it annoying.
+
+---
+
+# 16. RESPONSIVE DESIGN
+
+The website must look excellent on:
+
+* Desktop
+* Laptop
+* Tablet
+* Mobile
+
+On mobile:
+
+Hero becomes single-column.
+
+Hero image appears below CTA.
+
+Floating cards reposition properly.
+
+Navbar becomes hamburger menu.
+
+Treatment cards become one-column or two-column depending on width.
+
+Testimonials become swipeable carousel.
+
+Buttons should be large enough for touch.
+
+No horizontal scrolling.
+
+---
+
+# 17. PERFORMANCE
+
+Optimize for:
+
+* Fast loading
+* Lazy-loaded images
+* Optimized image sizes
+* Minimal unnecessary dependencies
+* Smooth 60fps animations
+* Good Lighthouse performance
+
+Use semantic HTML.
+
+Add proper:
+
+* title
+* meta description
+* Open Graph metadata
+* favicon
+* accessible alt text
+
+SEO title:
+
+"Aazhi Dental Care | Trusted Dental Clinic in Coimbatore"
+
+SEO description:
+
+"Aazhi Dental Care in P N Pudur, Coimbatore offers quality, affordable and patient-focused dental care. Book your appointment today."
+
+---
+
+# 18. IMAGE HANDLING
+
+If real clinic images are not available, use high-quality professional dental photography from a suitable free image source or create elegant placeholders.
+
+Do NOT use cheesy stock images.
+
+Prefer images showing:
+
+* Dentist consulting patient
+* Modern dental treatment
+* Clean dental clinic interiors
+* Smiling patients
+* Dentist working professionally
+
+Maintain consistent image aspect ratios.
+
+Use rounded corners.
+
+Use object-cover.
+
+---
+
+# 19. EXTRA PREMIUM FEATURES
+
+Add a small floating WhatsApp button at the bottom-right.
+
+WhatsApp number:
+
++91 99945 55278
+
+Use:
+
+https://wa.me/919994555278
+
+Message:
+
+"Hello Aazhi Dental Care, I would like to book a dental appointment."
+
+Also add a floating "Call Now" button on mobile.
+
+Create a sticky mobile appointment CTA.
+
+---
+
+# 20. APPOINTMENT MODAL
+
+When the user clicks "Book an Appointment", open a beautiful animated modal.
+
+Fields:
+
+Name
+Phone Number
+Preferred Date
+Preferred Time
+Treatment / Reason for Visit
+
+Button:
+
+"Request Appointment →"
+
+For this demo, frontend validation is enough.
+
+After submission, show:
+
+"Thank you! Your appointment request has been received. Our team will contact you shortly."
+
+Do not pretend the appointment was actually booked unless a backend is implemented.
+
+---
+
+# 21. PREMIUM VISUAL DETAILS
+
+Add subtle details that make the website feel expensive:
+
+* Soft gradient blobs
+* Glassmorphism cards
+* Large typography
+* Editorial spacing
+* Rounded image masks
+* Thin decorative lines
+* Tiny sparkle icons
+* Numbered sections
+* Soft shadows
+* Gradient text
+* Subtle grain/noise effect if it improves the design
+* Smooth scrolling
+* Section transitions
+
+Use typography similar to:
+
+Primary:
+Inter / Plus Jakarta Sans
+
+Headings:
+Plus Jakarta Sans / Manrope
+
+Use strong typography hierarchy.
+
+Hero heading should be large:
+
+Desktop:
+64–76px
+
+Mobile:
+42–48px
+
+---
+
+# 22. IMPORTANT UX GOAL
+
+The website should continuously guide the visitor toward:
+
+"Book an Appointment"
+
+The primary conversion action should be visible throughout the site.
+
+Do not make the website feel like a portfolio.
+
+It should feel like a **real clinic website ready for production**.
+
+---
+
+# 23. FINAL QUALITY CHECK
+
+Before finishing:
+
+* Remove all placeholder lorem ipsum.
+* Check every button.
+* Check every navigation link.
+* Check mobile responsiveness.
+* Check animations.
+* Check accessibility.
+* Check console for errors.
+* Make sure the app starts correctly in Replit.
+* Make sure there are no broken images.
+* Make sure phone and WhatsApp buttons work.
+* Make sure Google Maps direction button works.
+* Make sure appointment modal works.
+* Make sure the design looks premium on a 1440px desktop screen.
+* Make sure the mobile version looks premium on a 390px screen.
+
+MOST IMPORTANT:
+
+**Do not produce a generic dental website.**
+
+Make it feel like a **₹50,000+ premium website**, even though this is a freelance demo.
+
+The first screen should be visually impressive enough that a dental clinic owner would immediately want to see the rest of the website.
+
+Build the complete website now.

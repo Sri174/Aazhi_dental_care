@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Aazhi Dental Care"
+description = "A premium, responsive dental clinic website for Aazhi Dental Care in P N Pudur, Coimbatore, helping patients discover treatments, trust the clinic, and request appointments."
+version = "1.0.0"
+id = "artifacts/aazhi-dental-care"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20982
+
+[services.development]
+run = "pnpm --filter @workspace/aazhi-dental-care run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/aazhi-dental-care", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/aazhi-dental-care/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20982"
+BASE_PATH = "/"
