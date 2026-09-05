@@ -2,6 +2,7 @@ import { motion, AnimatePresence, useReducedMotion, useScroll, useTransform } fr
 import {
   ArrowUpRight,
   Baby,
+  Bot,
   CalendarDays,
   Check,
   ChevronLeft,
@@ -15,6 +16,7 @@ import {
   Play,
   Plus,
   ShieldCheck,
+  Send,
   SmilePlus,
   Sparkles,
   Star,
@@ -34,6 +36,102 @@ const phone = '099945 55278';
 const phoneHref = 'tel:+919994555278';
 const whatsappHref = 'https://wa.me/919994555278?text=Hello%20Aazhi%20Dental%20Care%2C%20I%27d%20like%20to%20enquire%20about%20an%20appointment.';
 const mapHref = 'https://www.google.com/maps/dir/?api=1&destination=Aazhi+Dental+Care%2C+526+Marudhamalai+Rd%2C+P+N+Pudur%2C+Coimbatore';
+
+type AssistantActionKind = 'book' | 'call' | 'whatsapp';
+type AssistantAction = { label: string; kind: AssistantActionKind };
+type AssistantMessage = {
+  id: number;
+  role: 'assistant' | 'user';
+  text: string;
+  actions?: AssistantAction[];
+};
+
+const initialAssistantMessages: AssistantMessage[] = [
+  {
+    id: 1,
+    role: 'assistant',
+    text: 'Hi, I’m the Aazhi assistant. I can help with treatments, timings, directions, or getting your visit started.',
+    actions: [
+      { label: 'Book a visit', kind: 'book' },
+      { label: 'Call the clinic', kind: 'call' },
+    ],
+  },
+];
+
+function getAssistantReply(question: string): Omit<AssistantMessage, 'id' | 'role'> {
+  const query = question.toLowerCase();
+
+  if (/(book|appointment|visit|schedule|slot|consult)/.test(query)) {
+    return {
+      text: 'I can help you get started. Choose a preferred date and time in the enquiry form, and the Aazhi team will confirm the visit by phone. This chat does not book appointments automatically.',
+      actions: [{ label: 'Open appointment form', kind: 'book' }],
+    };
+  }
+
+  if (/(hour|open|close|timing|time)/.test(query)) {
+    return {
+      text: 'Aazhi Dental Care is open today until 8:30 PM. Call before visiting if you would like the team to help find a time that works for you.',
+      actions: [{ label: 'Call 099945 55278', kind: 'call' }],
+    };
+  }
+
+  if (/(where|address|location|direction|reach|map)/.test(query)) {
+    return {
+      text: 'You’ll find us at 526, Marudhamalai Road, opposite N.S.R Bakery, P N Pudur, Coimbatore, Tamil Nadu 641041.',
+      actions: [{ label: 'Get directions', kind: 'whatsapp' }],
+    };
+  }
+
+  if (/(phone|call|number|contact)/.test(query)) {
+    return {
+      text: 'You can reach Aazhi Dental Care on 099945 55278. The team can answer questions about your concern and help with a visit.',
+      actions: [{ label: 'Call the clinic', kind: 'call' }],
+    };
+  }
+
+  if (/(whatsapp|message|text)/.test(query)) {
+    return {
+      text: 'WhatsApp is a quick way to share your question or request a visit with the clinic team.',
+      actions: [{ label: 'Message on WhatsApp', kind: 'whatsapp' }],
+    };
+  }
+
+  if (/(treatment|service|do you|offer|provide|care)/.test(query)) {
+    return {
+      text: 'The clinic offers general dentistry, wisdom tooth removal, root canal treatment, dental implants, teeth whitening, cosmetic dentistry, braces and aligners, and children’s dentistry.',
+      actions: [{ label: 'Talk about my care', kind: 'book' }],
+    };
+  }
+
+  if (/(price|cost|fee|afford|expensive)/.test(query)) {
+    return {
+      text: 'Treatment cost depends on your concern and the plan that is right for you. A consultation is the best way to get clear options and an accurate estimate before treatment.',
+      actions: [{ label: 'Ask the clinic', kind: 'whatsapp' }],
+    };
+  }
+
+  if (/(child|kid|children|young)/.test(query)) {
+    return {
+      text: 'Yes — children’s dentistry is part of the clinic’s care offering, with a gentle approach designed to make early visits feel positive.',
+      actions: [{ label: 'Book a consultation', kind: 'book' }],
+    };
+  }
+
+  if (/(pain|emergency|urgent|swelling|bleed)/.test(query)) {
+    return {
+      text: 'For urgent pain, swelling, bleeding, or a dental injury, please call the clinic directly so the team can guide you on the next step. This assistant cannot diagnose or triage emergencies.',
+      actions: [{ label: 'Call 099945 55278', kind: 'call' }],
+    };
+  }
+
+  return {
+    text: 'I can help with appointment enquiries, treatments, clinic timings, directions, phone details, and WhatsApp support. What would you like to know?',
+    actions: [
+      { label: 'What treatments do you offer?', kind: 'book' },
+      { label: 'When are you open?', kind: 'call' },
+    ],
+  };
+}
 
 const treatments = [
   { title: 'General dentistry', note: 'The everyday care that keeps you ahead.', icon: Stethoscope },
@@ -172,16 +270,135 @@ function AppointmentModal({ onClose }: { onClose: () => void }) {
   );
 }
 
+function AssistantChat({
+  messages,
+  input,
+  loading,
+  onInputChange,
+  onSubmit,
+  onAction,
+}: {
+  messages: AssistantMessage[];
+  input: string;
+  loading: boolean;
+  onInputChange: (value: string) => void;
+  onSubmit: (event: FormEvent<HTMLFormElement>) => void;
+  onAction: (kind: AssistantActionKind) => void;
+}) {
+  return (
+    <motion.section
+      role="dialog"
+      aria-modal="false"
+      aria-labelledby="assistant-title"
+      initial={{ opacity: 0, y: 18, scale: 0.97 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 18, scale: 0.97 }}
+      className="fixed bottom-24 right-4 z-50 flex h-[min(620px,calc(100dvh-7rem))] w-[calc(100vw-2rem)] max-w-[390px] flex-col overflow-hidden rounded-[1.6rem] border border-teal-100 bg-[#f8fffd] shadow-2xl shadow-teal-950/20 sm:bottom-6 sm:right-6"
+      data-testid="panel-assistant-chat"
+    >
+      <div className="flex items-center justify-between bg-teal-900 px-5 py-4 text-white">
+        <div className="flex items-center gap-3">
+          <span className="grid h-10 w-10 place-items-center rounded-full bg-amber-300 text-amber-950">
+            <Bot size={20} />
+          </span>
+          <div>
+            <h2 id="assistant-title" className="text-sm font-bold">Aazhi assistant</h2>
+            <p className="mt-0.5 text-[11px] text-teal-100/70">Care guidance, anytime</p>
+          </div>
+        </div>
+        <span className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-teal-100/70">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" /> Online
+        </span>
+      </div>
+
+      <div className="flex-1 space-y-4 overflow-y-auto px-4 py-5" aria-live="polite" data-testid="assistant-messages">
+        {messages.map((message) => (
+          <div key={message.id} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+            <div className={`max-w-[87%] ${message.role === 'user' ? 'items-end' : 'items-start'}`}>
+              <div className={`rounded-2xl px-4 py-3 text-sm leading-6 ${message.role === 'user' ? 'rounded-br-md bg-teal-700 text-white' : 'rounded-bl-md bg-white text-slate-600 shadow-sm ring-1 ring-teal-100'}`}>
+                {message.text}
+              </div>
+              {message.actions && message.role === 'assistant' && (
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {message.actions.map((action) => (
+                    action.kind === 'book' ? (
+                      <button key={action.label} type="button" onClick={() => onAction(action.kind)} className="rounded-full border border-teal-200 bg-teal-50 px-3 py-2 text-[11px] font-bold text-teal-800 transition hover:-translate-y-0.5 hover:bg-teal-100" data-testid={`assistant-action-${action.kind}`}>
+                        {action.label}
+                      </button>
+                    ) : (
+                      <a key={action.label} href={action.kind === 'call' ? phoneHref : whatsappHref} target={action.kind === 'whatsapp' ? '_blank' : undefined} rel={action.kind === 'whatsapp' ? 'noreferrer' : undefined} className="rounded-full border border-teal-200 bg-teal-50 px-3 py-2 text-[11px] font-bold text-teal-800 transition hover:-translate-y-0.5 hover:bg-teal-100" data-testid={`assistant-action-${action.kind}`}>
+                        {action.label}
+                      </a>
+                    )
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+        {loading && (
+          <div className="flex justify-start">
+            <div className="flex items-center gap-1 rounded-2xl rounded-bl-md bg-white px-4 py-3 shadow-sm ring-1 ring-teal-100" aria-label="Assistant is typing">
+              {[0, 1, 2].map((dot) => <span key={dot} className="h-1.5 w-1.5 animate-bounce rounded-full bg-teal-500" style={{ animationDelay: `${dot * 100}ms` }} />)}
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className="border-t border-teal-100 bg-white px-4 py-4">
+        <div className="mb-3 flex gap-2 overflow-x-auto pb-1">
+          {['What treatments do you offer?', 'When are you open?', 'Where are you located?'].map((prompt) => (
+            <button key={prompt} type="button" onClick={() => { onInputChange(prompt); }} className="shrink-0 rounded-full bg-teal-50 px-3 py-2 text-[10px] font-bold text-teal-800 transition hover:bg-teal-100" data-testid="assistant-suggested-question">
+              {prompt}
+            </button>
+          ))}
+        </div>
+        <form onSubmit={onSubmit} className="flex items-center gap-2">
+          <label className="sr-only" htmlFor="assistant-input">Ask Aazhi assistant</label>
+          <input id="assistant-input" value={input} onChange={(event) => onInputChange(event.target.value)} placeholder="Ask about your visit..." className="min-w-0 flex-1 rounded-full border border-teal-100 bg-[#f8fffd] px-4 py-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-100" data-testid="input-assistant-message" />
+          <button type="submit" disabled={!input.trim() || loading} aria-label="Send message" className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-teal-700 text-white transition hover:bg-teal-800 disabled:cursor-not-allowed disabled:opacity-40" data-testid="button-send-assistant">
+            <Send size={17} />
+          </button>
+        </form>
+        <p className="mt-2 text-center text-[10px] text-slate-400">For urgent concerns, please call the clinic directly.</p>
+      </div>
+    </motion.section>
+  );
+}
+
 function Home() {
   const [modalOpen, setModalOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [reviewIndex, setReviewIndex] = useState(0);
+  const [assistantOpen, setAssistantOpen] = useState(false);
+  const [assistantInput, setAssistantInput] = useState('');
+  const [assistantLoading, setAssistantLoading] = useState(false);
+  const [assistantMessages, setAssistantMessages] = useState<AssistantMessage[]>(initialAssistantMessages);
   const reduce = useReducedMotion();
   const { scrollY } = useScroll();
   const heroY = useTransform(scrollY, [0, 700], [0, reduce ? 0 : 110]);
 
   const nextReview = () => setReviewIndex((current) => (current + 1) % reviews.length);
   const previousReview = () => setReviewIndex((current) => (current - 1 + reviews.length) % reviews.length);
+  const handleAssistantSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const question = assistantInput.trim();
+    if (!question || assistantLoading) return;
+    setAssistantMessages((current) => [...current, { id: Date.now(), role: 'user', text: question }]);
+    setAssistantInput('');
+    setAssistantLoading(true);
+    window.setTimeout(() => {
+      const reply = getAssistantReply(question);
+      setAssistantMessages((current) => [...current, { id: Date.now() + 1, role: 'assistant', ...reply }]);
+      setAssistantLoading(false);
+    }, reduce ? 0 : 450);
+  };
+  const handleAssistantAction = (kind: AssistantActionKind) => {
+    if (kind === 'book') {
+      setModalOpen(true);
+      setAssistantOpen(false);
+    }
+  };
 
   return (
     <div id="top" className="noise-layer min-h-[100dvh] overflow-hidden bg-[#f0fdfa] font-body text-slate-900">
@@ -318,6 +535,11 @@ function Home() {
       </footer>
 
       <a href={phoneHref} className="fixed bottom-4 left-4 right-4 z-30 flex items-center justify-center gap-2 rounded-full bg-amber-400 px-5 py-3.5 text-sm font-bold text-amber-950 shadow-xl shadow-amber-950/20 sm:hidden" data-testid="link-mobile-call"><Phone size={16} /> Call Aazhi Dental Care</a>
+      <AnimatePresence>{assistantOpen && <AssistantChat messages={assistantMessages} input={assistantInput} loading={assistantLoading} onInputChange={setAssistantInput} onSubmit={handleAssistantSubmit} onAction={handleAssistantAction} />}</AnimatePresence>
+      <motion.button type="button" onClick={() => setAssistantOpen((open) => !open)} whileHover={{ y: -3 }} whileTap={{ scale: 0.96 }} aria-label={assistantOpen ? 'Close Aazhi assistant' : 'Open Aazhi assistant'} className="fixed bottom-20 right-4 z-50 flex items-center gap-2 rounded-full bg-teal-700 px-4 py-3 text-sm font-bold text-white shadow-xl shadow-teal-950/25 transition hover:bg-teal-800 sm:bottom-6 sm:right-6" data-testid="button-open-assistant">
+        {assistantOpen ? <X size={18} /> : <MessageCircle size={18} />}
+        <span className="hidden sm:inline">{assistantOpen ? 'Close assistant' : 'Ask Aazhi'}</span>
+      </motion.button>
       <AnimatePresence>{modalOpen && <AppointmentModal onClose={() => setModalOpen(false)} />}</AnimatePresence>
     </div>
   );
