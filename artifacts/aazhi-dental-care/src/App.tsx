@@ -187,11 +187,7 @@ function Reveal({ children, delay = 0, className = '' }: { children: ReactNode; 
 function Logo({ light = false }: { light?: boolean }) {
   return (
     <a href="#top" className="group flex items-center gap-3" data-testid="link-logo">
-      <span className={`relative grid h-10 w-10 place-items-center rounded-full border ${light ? 'border-teal-200/50 bg-teal-800/60 text-teal-100' : 'border-teal-200 bg-white text-teal-700'} transition-transform duration-300 group-hover:rotate-12`}>
-        <span className="absolute h-5 w-px bg-current" />
-        <span className="absolute h-px w-5 bg-current" />
-        <span className="absolute inset-[6px] rounded-full border border-current opacity-25" />
-      </span>
+      <img src="/Aazhi%20logo.png" alt="Aazhi Dental Care Logo" className="h-12 w-12 object-contain transition-transform duration-300 group-hover:scale-105" />
       <span className="leading-none">
         <span className={`block font-display text-[1.4rem] italic ${light ? 'text-white' : 'text-slate-900'}`}>Aazhi</span>
         <span className={`block text-[9px] font-bold uppercase tracking-[0.26em] ${light ? 'text-teal-100/80' : 'text-teal-700'}`}>Dental care</span>
@@ -293,7 +289,7 @@ function AssistantChat({
       initial={{ opacity: 0, y: 18, scale: 0.97 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: 18, scale: 0.97 }}
-      className="fixed bottom-24 right-4 z-50 flex h-[min(620px,calc(100dvh-7rem))] w-[calc(100vw-2rem)] max-w-[390px] flex-col overflow-hidden rounded-[1.6rem] border border-teal-100 bg-[#f8fffd] shadow-2xl shadow-teal-950/20 sm:bottom-6 sm:right-6"
+      className="fixed bottom-40 right-4 z-50 flex h-[min(620px,calc(100dvh-12rem))] w-[calc(100vw-2rem)] max-w-[390px] flex-col overflow-hidden rounded-[1.6rem] border border-teal-100 bg-[#f8fffd] shadow-2xl shadow-teal-950/20 sm:bottom-28 sm:h-[min(620px,calc(100dvh-9rem))] sm:right-6"
       data-testid="panel-assistant-chat"
     >
       <div className="flex items-center justify-between bg-teal-900 px-5 py-4 text-white">
@@ -484,8 +480,36 @@ function Home() {
               <div><SectionLabel>Care, considered</SectionLabel><h2 id="treatments-title" className="max-w-xl font-display text-5xl leading-[.98] tracking-[-.03em] text-slate-900 sm:text-6xl">The right care<br /><em className="text-teal-700">for your life.</em></h2></div>
               <p className="max-w-xs text-sm leading-6 text-slate-500">From a regular check-up to a complete smile transformation, we make every step feel clear.</p>
             </Reveal>
-            <div className="mt-14 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              {treatments.map((treatment, index) => { const Icon = treatment.icon; return <Reveal key={treatment.title} delay={index * .04}><button type="button" onClick={() => setModalOpen(true)} className={`group relative flex min-h-[225px] w-full flex-col justify-between overflow-hidden rounded-2xl border p-6 text-left transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-900/10 ${index === 1 || index === 6 ? 'border-teal-700 bg-teal-800 text-white' : 'border-teal-100 bg-[#f8fffd] text-slate-900'}`} data-testid={`button-treatment-${index}`}><div className="flex items-start justify-between"><span className={`grid h-11 w-11 place-items-center rounded-full ${index === 1 || index === 6 ? 'bg-white/10 text-teal-100' : 'bg-teal-100 text-teal-700'}`}><Icon size={20} strokeWidth={1.7} /></span><ArrowUpRight size={18} className={`transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 ${index === 1 || index === 6 ? 'text-teal-100' : 'text-teal-600'}`} /></div><div><h3 className="text-base font-bold">{treatment.title}</h3><p className={`mt-2 max-w-[18rem] text-sm leading-5 ${index === 1 || index === 6 ? 'text-teal-100/70' : 'text-slate-500'}`}>{treatment.note}</p></div></button></Reveal>; })}
+            <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {treatments.map((treatment, index) => { 
+                const Icon = treatment.icon; 
+                return (
+                  <Reveal key={treatment.title} delay={index * .05}>
+                    <motion.button 
+                      type="button" 
+                      onClick={() => setModalOpen(true)} 
+                      whileHover={{ scale: 1.03, y: -6 }} 
+                      whileTap={{ scale: 0.98 }} 
+                      className={`group relative flex min-h-[240px] w-full flex-col justify-between overflow-hidden rounded-3xl border p-7 text-left transition-colors duration-500 hover:shadow-2xl hover:shadow-teal-900/20 ${index === 1 || index === 6 ? 'border-teal-700 bg-teal-800 text-white' : 'border-teal-100 bg-[#f8fffd] text-slate-900'}`} 
+                      data-testid={`button-treatment-${index}`}
+                    >
+                      <div className={`absolute inset-0 bg-gradient-to-br from-transparent to-white/20 opacity-0 transition-opacity duration-500 group-hover:opacity-100 ${index === 1 || index === 6 ? 'to-white/10' : 'to-teal-500/5'}`} />
+                      <div className="relative z-10 flex w-full items-start justify-between">
+                        <span className={`grid h-14 w-14 place-items-center rounded-full transition-all duration-500 group-hover:scale-110 group-hover:shadow-lg ${index === 1 || index === 6 ? 'bg-white/10 text-teal-100 group-hover:bg-white/20' : 'bg-teal-100 text-teal-700 group-hover:bg-teal-200'}`}>
+                          <Icon size={24} strokeWidth={1.5} className="transition-transform duration-500 group-hover:rotate-12" />
+                        </span>
+                        <span className={`rounded-full p-2 transition-all duration-500 group-hover:scale-110 ${index === 1 || index === 6 ? 'bg-white/0 text-teal-100 group-hover:bg-white/10' : 'bg-teal-50/0 text-teal-600 group-hover:bg-teal-50'}`}>
+                          <ArrowUpRight size={20} className="transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        </span>
+                      </div>
+                      <div className="relative z-10 mt-8">
+                        <h3 className="text-lg font-bold tracking-tight">{treatment.title}</h3>
+                        <p className={`mt-2.5 max-w-[18rem] text-sm leading-relaxed ${index === 1 || index === 6 ? 'text-teal-100/80' : 'text-slate-500 group-hover:text-slate-600'}`}>{treatment.note}</p>
+                      </div>
+                    </motion.button>
+                  </Reveal>
+                ); 
+              })}
             </div>
             <Reveal className="mt-8 flex flex-col items-start justify-between gap-4 rounded-2xl bg-teal-50 px-6 py-5 sm:flex-row sm:items-center sm:px-8"><p className="text-sm text-teal-900"><span className="font-bold">Not sure what you need?</span> That’s exactly what your first consultation is for.</p><button type="button" onClick={() => setModalOpen(true)} className="inline-flex items-center gap-2 text-sm font-bold text-teal-700 hover:text-teal-900" data-testid="button-treatment-enquiry">Talk to our team <ArrowUpRight size={15} /></button></Reveal>
           </div>
@@ -523,20 +547,55 @@ function Home() {
         </section>
       </main>
 
-      <footer className="bg-teal-950 px-5 pb-28 pt-16 text-white sm:px-8 sm:pb-16 lg:px-10">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 border-b border-teal-100/15 pb-12 md:grid-cols-[1.5fr_1fr_1fr]">
-            <div><Logo light /><p className="mt-6 max-w-xs text-sm leading-6 text-teal-100/60">A thoughtful dental clinic in P N Pudur, Coimbatore — where good care feels human.</p></div>
-            <div><p className="text-[10px] font-bold uppercase tracking-[.2em] text-teal-200/60">Explore</p><div className="mt-5 grid gap-3 text-sm text-teal-50/75">{navItems.map((item) => <a key={item.href} href={item.href} className="transition hover:text-white" data-testid={`link-footer-${item.label.toLowerCase().replaceAll(' ', '-')}`}>{item.label}</a>)}</div></div>
-            <div><p className="text-[10px] font-bold uppercase tracking-[.2em] text-teal-200/60">Talk to us</p><div className="mt-5 grid gap-3 text-sm text-teal-50/75"><a href={phoneHref} className="transition hover:text-white" data-testid="link-footer-phone">{phone}</a><a href={whatsappHref} target="_blank" rel="noreferrer" className="transition hover:text-white" data-testid="link-footer-whatsapp">WhatsApp enquiry</a><a href={mapHref} target="_blank" rel="noreferrer" className="transition hover:text-white" data-testid="link-footer-directions">Get directions</a></div></div>
+      <footer className="relative overflow-hidden bg-teal-950 px-5 pb-28 pt-16 text-white sm:px-8 sm:pb-16 lg:px-10">
+        <div className="pointer-events-none absolute inset-0 opacity-30 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-teal-700/60 via-teal-950 to-teal-950" />
+        <div className="relative mx-auto max-w-7xl z-10">
+          <div className="grid gap-12 border-b border-teal-100/10 pb-12 md:grid-cols-[1.5fr_1fr_1fr]">
+            <Reveal delay={0}>
+              <Logo light />
+              <p className="mt-8 max-w-xs text-sm leading-relaxed text-teal-100/60">A thoughtful dental clinic in P N Pudur, Coimbatore — where good care feels human.</p>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="text-[10px] font-bold uppercase tracking-[.25em] text-teal-500">Explore</p>
+              <div className="mt-6 flex flex-col gap-4 text-sm font-medium text-teal-100/70">
+                {navItems.map((item) => (
+                  <a key={item.href} href={item.href} className="group flex w-fit items-center transition-colors hover:text-white" data-testid={`link-footer-${item.label.toLowerCase().replaceAll(' ', '-')}`}>
+                    <span className="transition-transform duration-300 group-hover:translate-x-1.5">{item.label}</span>
+                  </a>
+                ))}
+              </div>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <p className="text-[10px] font-bold uppercase tracking-[.25em] text-teal-500">Talk to us</p>
+              <div className="mt-6 flex flex-col gap-4 text-sm font-medium text-teal-100/70">
+                {[
+                  { label: phone, href: phoneHref, testid: 'phone', external: false },
+                  { label: 'WhatsApp enquiry', href: whatsappHref, testid: 'whatsapp', external: true },
+                  { label: 'Get directions', href: mapHref, testid: 'directions', external: true }
+                ].map((link) => (
+                  <a key={link.label} href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noreferrer" : undefined} className="group flex w-fit items-center transition-colors hover:text-white" data-testid={`link-footer-${link.testid}`}>
+                    <span className="transition-transform duration-300 group-hover:translate-x-1.5">{link.label}</span>
+                  </a>
+                ))}
+              </div>
+            </Reveal>
           </div>
-          <div className="flex flex-col justify-between gap-3 pt-6 text-[11px] text-teal-100/45 sm:flex-row"><p>© {new Date().getFullYear()} Aazhi Dental Care. All rights reserved.</p><p>Made for better visits.</p></div>
+          <Reveal delay={0.3} className="flex flex-col justify-between gap-4 pt-8 text-[11px] tracking-wide text-teal-100/40 sm:flex-row">
+            <p className="transition-colors hover:text-teal-100/70">© {new Date().getFullYear()} Aazhi Dental Care. All rights reserved.</p>
+            <p className="transition-colors hover:text-teal-100/70">Made for better visits.</p>
+          </Reveal>
         </div>
       </footer>
 
       <a href={phoneHref} className="fixed bottom-4 left-4 right-4 z-30 flex items-center justify-center gap-2 rounded-full bg-amber-400 px-5 py-3.5 text-sm font-bold text-amber-950 shadow-xl shadow-amber-950/20 sm:hidden" data-testid="link-mobile-call"><Phone size={16} /> Call Aazhi Dental Care</a>
       <AnimatePresence>{assistantOpen && <AssistantChat messages={assistantMessages} input={assistantInput} loading={assistantLoading} onInputChange={setAssistantInput} onSubmit={handleAssistantSubmit} onAction={handleAssistantAction} />}</AnimatePresence>
-      <motion.button type="button" onClick={() => setAssistantOpen((open) => !open)} whileHover={{ y: -3 }} whileTap={{ scale: 0.96 }} aria-label={assistantOpen ? 'Close Aazhi assistant' : 'Open Aazhi assistant'} className="fixed bottom-20 right-4 z-50 flex items-center gap-2 rounded-full bg-teal-700 px-4 py-3 text-sm font-bold text-white shadow-xl shadow-teal-950/25 transition hover:bg-teal-800 sm:bottom-6 sm:right-6" data-testid="button-open-assistant">
+      <motion.button type="button" onClick={() => setAssistantOpen((open) => !open)} animate={{ y: [0, -8, 0] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }} aria-label={assistantOpen ? 'Close Aazhi assistant' : 'Open Aazhi assistant'} className="fixed bottom-24 right-4 z-50 flex items-center gap-2 rounded-full bg-teal-700 px-4 py-3 text-sm font-bold text-white shadow-xl shadow-teal-950/25 transition-colors hover:bg-teal-800 sm:bottom-12 sm:right-6" data-testid="button-open-assistant">
+        {!assistantOpen && (
+          <>
+            <div className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-teal-600 opacity-75 animate-ping" style={{ animationDuration: '2.5s' }} />
+            <div className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-teal-500 opacity-50 animate-ping" style={{ animationDuration: '2.5s', animationDelay: '1.25s' }} />
+          </>
+        )}
         {assistantOpen ? <X size={18} /> : <MessageCircle size={18} />}
         <span className="hidden sm:inline">{assistantOpen ? 'Close assistant' : 'Ask Aazhi'}</span>
       </motion.button>
