@@ -1,6 +1,6 @@
 [build]
   command = "pnpm --filter ./artifacts/aazhi-dental-care run build"
-  publish = "artifacts/aazhi-dental-care/dist"
+  publish = "artifacts/aazhi-dental-care/dist/public"
 
 [[redirects]]
   from = "/*"
